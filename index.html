@@ -144,6 +144,19 @@
             display: block;
         }
 
+        .flag-image {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .flag-emoji {
+            font-size: 1.5rem;
+            display: none;
+        }
+
         .tab-name {
             font-size: 0.9rem;
             font-weight: inherit;
@@ -223,123 +236,26 @@
             font-weight: 600;
         }
 
-        /* Loading state */
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-            font-style: italic;
-        }
-
         /* Mobile Styles */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 15px;
-            }
-
-            .header {
-                padding: 30px 20px;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .tab-nav {
-                flex-wrap: wrap;
-            }
-
-            .tab-button {
-                min-width: 150px;
-                padding: 15px 10px;
-                font-size: 0.9rem;
-            }
-
-            .tab-flag {
-                font-size: 1.2rem;
-            }
-
-            .tab-name {
-                font-size: 0.8rem;
-            }
-
-            .tab-content {
-                padding: 30px 20px;
-                max-height: 60vh;
-            }
-
-            .tab-content h1 {
-                font-size: 1.6rem;
-            }
-
-            .tab-content h2 {
-                font-size: 1.2rem;
-            }
-
-            .tab-content h3 {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 20px 15px;
-            }
-
-            .tab-button {
-                min-width: 120px;
-                padding: 12px 8px;
-            }
-
-            .tab-content {
-                padding: 20px 15px;
-            }
+            body { padding: 10px; }
+            .container { border-radius: 15px; }
+            .header { padding: 30px 20px; }
+            .logo { font-size: 2rem; }
+            .tab-nav { flex-wrap: wrap; }
+            .tab-button { min-width: 150px; padding: 15px 10px; font-size: 0.9rem; }
+            .tab-flag { font-size: 1.2rem; }
+            .tab-name { font-size: 0.8rem; }
+            .tab-content { padding: 30px 20px; max-height: 60vh; }
+            .tab-content h1 { font-size: 1.6rem; }
+            .tab-content h2 { font-size: 1.2rem; }
+            .tab-content h3 { font-size: 1.1rem; }
         }
 
         /* Focus styles for accessibility */
         .tab-button:focus {
             outline: 2px solid #a21942;
             outline-offset: -2px;
-        }
-
-        /* Print styles */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                border: none;
-            }
-
-            .tab-nav {
-                display: none;
-            }
-
-            .tab-content {
-                display: block !important;
-                max-height: none;
-                overflow: visible;
-                padding: 20px;
-                page-break-inside: avoid;
-            }
-
-            .tab-content:not(:first-of-type) {
-                page-break-before: always;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                transition-duration: 0.01ms !important;
-            }
         }
 
         /* Custom scrollbar for content */
@@ -379,27 +295,57 @@
         <!-- Tab Navigation -->
         <div class="tab-nav" role="tablist">
             <button class="tab-button active" role="tab" aria-selected="true" aria-controls="english-content" id="english-tab" data-tab="english">
-                <span class="tab-flag">🇺🇸</span>
+                <span class="tab-flag">
+                    <img src="https://flagcdn.com/24x18/gb.png" 
+                         alt="UK Flag" 
+                         class="flag-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="flag-emoji">🇬🇧</span>
+                </span>
                 <span class="tab-name">English</span>
             </button>
             
             <button class="tab-button" role="tab" aria-selected="false" aria-controls="indonesian-content" id="indonesian-tab" data-tab="indonesian">
-                <span class="tab-flag">🇮🇩</span>
+                <span class="tab-flag">
+                    <img src="https://flagcdn.com/24x18/id.png" 
+                         alt="Indonesia Flag" 
+                         class="flag-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="flag-emoji">🇮🇩</span>
+                </span>
                 <span class="tab-name">Indonesian</span>
             </button>
             
             <button class="tab-button" role="tab" aria-selected="false" aria-controls="khmer-content" id="khmer-tab" data-tab="khmer">
-                <span class="tab-flag">🇰🇭</span>
+                <span class="tab-flag">
+                    <img src="https://flagcdn.com/24x18/kh.png" 
+                         alt="Cambodia Flag" 
+                         class="flag-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="flag-emoji">🇰🇭</span>
+                </span>
                 <span class="tab-name">Khmer</span>
             </button>
             
             <button class="tab-button" role="tab" aria-selected="false" aria-controls="vietnamese-content" id="vietnamese-tab" data-tab="vietnamese">
-                <span class="tab-flag">🇻🇳</span>
+                <span class="tab-flag">
+                    <img src="https://flagcdn.com/24x18/vn.png" 
+                         alt="Vietnam Flag" 
+                         class="flag-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="flag-emoji">🇻🇳</span>
+                </span>
                 <span class="tab-name">Vietnamese</span>
             </button>
             
             <button class="tab-button coming-soon" role="tab" aria-selected="false" disabled>
-                <span class="tab-flag">🇹🇭</span>
+                <span class="tab-flag">
+                    <img src="https://flagcdn.com/24x18/th.png" 
+                         alt="Thailand Flag" 
+                         class="flag-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="flag-emoji">🇹🇭</span>
+                </span>
                 <span class="tab-name">Thai</span>
                 <span class="coming-soon-badge">Soon</span>
             </button>
@@ -407,48 +353,401 @@
 
         <!-- Tab Content Panels -->
         <div id="english-content" class="tab-content active" role="tabpanel" aria-labelledby="english-tab">
-            <div class="loading">Loading English content...</div>
+            <h1>AgriG8 Privacy Policy</h1>
+            <p><strong>Effective Date:</strong> July 21, 2025</p>
+            
+            <h2>1. Introduction</h2>
+            <p>AgriG8 is committed to protecting your personal and farming data. This Privacy Policy outlines how we collect, use, store, and share data in Cambodia, Vietnam, and Indonesia, in line with international best practices, ASEAN data protection principles, and Google Play Store policies.</p>
+            
+            <h2>2. What Data We Collect</h2>
+            <p>We may collect the following types of data:</p>
+            <ul>
+                <li><strong>Personal data:</strong> Name, phone number, and other contact details.</li>
+                <li><strong>Farming data:</strong> This includes information such as land size, crop type, farm location, yield records, input usage, farming practices, and observations (e.g., pest outbreaks, planting schedules, or weather-related notes). We may also collect <strong>other farming-related data</strong> that helps us deliver better agronomic insights and advisory services — such as water usage, soil condition, fertilizer applications, and harvesting activities.</li>
+                <li><strong>Device or app usage data:</strong> Diagnostic logs, crash reports, and interaction data (if applicable), which help us improve the performance and user experience of the app.</li>
+            </ul>
+            
+            <h2>3. Purpose of Collection</h2>
+            <p>We collect and process your data for the following purposes:</p>
+            <ul>
+                <li>Delivering personalized farming advice and agronomic recommendations</li>
+                <li>Supporting sustainability certification and environmental tracking</li>
+                <li>Improving app features and user experience</li>
+                <li>Generating insights and reports for partners (aggregated and anonymized)</li>
+            </ul>
+            
+            <h2>4. Consent and Legal Basis</h2>
+            <p>Your data is collected based on your <strong>informed and explicit consent</strong>. You must provide consent before any data is collected. You may withdraw your consent at any time through the app or by contacting us.</p>
+            
+            <h2>5. Data Sharing</h2>
+            <p>We may share your data <strong>only with your consent</strong> and for specific use cases, such as:</p>
+            <ul>
+                <li>With government or NGO partners involved in agricultural development</li>
+                <li>With research, advisory, or certification agencies</li>
+                <li>With <strong>agribusiness stakeholders</strong> (e.g., input suppliers, sustainability partners, or buyers) for purposes that align with farmer support and ecosystem development</li>
+            </ul>
+            <p>All shared data will be <strong>aggregated and anonymized</strong> where possible. We do not share personally identifiable information unless explicitly authorized by you.</p>
+            
+            <h2>6. Storage and Security</h2>
+            <p>Your data is securely stored on cloud infrastructure with robust security measures, including:</p>
+            <ul>
+                <li>Encryption at rest and in transit</li>
+                <li>Access control</li>
+                <li>Regular audits and monitoring</li>
+            </ul>
+            
+            <h2>7. Cross-Border Transfers</h2>
+            <p>Your data may be stored or processed on secure servers located in other countries. When transferring data across borders, we take steps to ensure it is handled in a way that respects local regulations and protects your privacy.</p>
+            <p>These steps may include data minimization, encryption, contractual safeguards, and ensuring that appropriate protections are in place. Where required, we obtain user consent or take additional compliance measures in line with local laws.</p>
+            
+            <h2>8. Use of Data for AI, Innovation, and Service Improvement</h2>
+            <p>As a technology company focused on data and AI, AgriG8 leverages the information you provide to enhance our platform and services.</p>
+            <p>We may use data — including personal and farming-related inputs — to support activities such as:</p>
+            <ul>
+                <li>Improving our platform functionality and user experience</li>
+                <li>Developing predictive tools, models, and digital advisory services</li>
+                <li>Generating reports, trends, and benchmarking information</li>
+            </ul>
+            <p>While your data helps us build smarter solutions, please note:</p>
+            <ul>
+                <li>We <strong>do not sell your personal or user-submitted data</strong> to third parties.</li>
+                <li>We may offer <strong>data-driven insights or aggregated outputs</strong> to partners, clients, or stakeholders in a way that <strong>does not identify individuals</strong>.</li>
+                <li>Any use of data for external purposes is done responsibly and in accordance with industry standards.</li>
+            </ul>
+            <p>This approach is consistent with practices used by global digital platforms, where data is applied to build better experiences, inform strategy, and power innovation — always with respect for individual privacy.</p>
+            
+            <h2>9. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Request correction or deletion</li>
+                <li>Withdraw consent for specific uses</li>
+                <li>Contact us with any privacy concern</li>
+            </ul>
+            
+            <h2>10. Access and Deletion Requests</h2>
+            <p>To request access to your data or ask for it to be deleted, please contact us at:<br>
+            📧 <strong>contact@agrig8.com</strong><br>
+            We will respond within 30 days.</p>
+            
+            <h2>11. Compliance with Google Play Policies</h2>
+            <p>In accordance with Google Play's User Data policy:</p>
+            <ul>
+                <li>We collect personal data only to support core features such as advisory and sustainability services</li>
+                <li>We do <strong>not sell your personal data</strong></li>
+                <li>Your data is encrypted and stored securely</li>
+                <li>You can opt out or request deletion at any time</li>
+                <li>This policy is displayed <strong>in-app and publicly accessible via our website</strong></li>
+            </ul>
+            
+            <h2>12. Policy Updates</h2>
+            <p>This privacy policy may be updated periodically. Any significant changes will be communicated via the app or website.</p>
+            
+            <h2>13. Contact Us</h2>
+            <p>For any questions, concerns, or complaints regarding this policy, contact:<br>
+            📧 <strong>contact@agrig8.com</strong></p>
         </div>
 
         <div id="indonesian-content" class="tab-content" role="tabpanel" aria-labelledby="indonesian-tab">
-            <div class="loading">Loading Indonesian content...</div>
+            <h1>Kebijakan Privasi AgriG8</h1>
+            <p><strong>Tanggal Efektif:</strong> 21 Juli 2025</p>
+            
+            <h2>1. Pendahuluan</h2>
+            <p>AgriG8 berkomitmen untuk melindungi data pribadi dan data pertanian Anda. Kebijakan Privasi ini menjelaskan cara kami mengumpulkan, menggunakan, menyimpan, dan membagikan data di Kamboja, Vietnam, dan Indonesia, sejalan dengan praktik terbaik internasional, prinsip-prinsip perlindungan data ASEAN, dan kebijakan Google Play Store.</p>
+            
+            <h2>2. Data yang Kami Kumpulkan</h2>
+            <p>Kami dapat mengumpulkan jenis data berikut:</p>
+            <ul>
+                <li><strong>Data pribadi:</strong> Nama, nomor telepon, dan detail kontak lainnya.</li>
+                <li><strong>Data pertanian:</strong> Ini mencakup informasi seperti ukuran lahan, jenis tanaman, lokasi pertanian, catatan hasil panen, penggunaan input, praktik pertanian, dan pengamatan (misalnya, wabah hama, jadwal tanam, atau catatan terkait cuaca). Kami juga dapat mengumpulkan <strong>data terkait pertanian lainnya</strong> yang membantu kami memberikan wawasan agronomi dan layanan konsultasi yang lebih baik — seperti penggunaan air, kondisi tanah, aplikasi pupuk, dan kegiatan panen.</li>
+                <li><strong>Data penggunaan perangkat atau aplikasi:</strong> Log diagnostik, laporan kerusakan (crash reports), dan data interaksi (jika berlaku), yang membantu kami meningkatkan kinerja dan pengalaman pengguna aplikasi.</li>
+            </ul>
+            
+            <h2>3. Tujuan Pengumpulan</h2>
+            <p>Kami mengumpulkan dan memproses data Anda untuk tujuan berikut:</p>
+            <ul>
+                <li>Memberikan saran pertanian yang dipersonalisasi dan rekomendasi agronomi</li>
+                <li>Mendukung sertifikasi keberlanjutan dan pelacakan lingkungan</li>
+                <li>Meningkatkan fitur aplikasi dan pengalaman pengguna</li>
+                <li>Menghasilkan wawasan dan laporan untuk mitra (diagregasi dan dianonimkan)</li>
+            </ul>
+            
+            <h2>4. Persetujuan dan Dasar Hukum</h2>
+            <p>Data Anda dikumpulkan berdasarkan persetujuan Anda yang terinformasi dan eksplisit. Anda harus memberikan persetujuan sebelum data apa pun dikumpulkan. Anda dapat menarik persetujuan Anda kapan saja melalui aplikasi atau dengan menghubungi kami.</p>
+            
+            <h2>5. Pembagian Data</h2>
+            <p>Kami dapat membagikan data Anda hanya dengan persetujuan Anda dan untuk kasus penggunaan tertentu, seperti:</p>
+            <ul>
+                <li>Dengan mitra pemerintah atau LSM (NGO) yang terlibat dalam pembangunan pertanian</li>
+                <li>Dengan lembaga penelitian, konsultasi, atau sertifikasi</li>
+                <li>Dengan <strong>para pemangku kepentingan agribisnis</strong> (misalnya, pemasok input, mitra keberlanjutan, atau pembeli) untuk tujuan yang sejalan dengan dukungan petani dan pengembangan ekosistem</li>
+            </ul>
+            <p>Semua data yang dibagikan akan <strong>diagregasi dan dianonimkan</strong> jika memungkinkan. Kami tidak membagikan informasi yang dapat diidentifikasi secara pribadi kecuali diizinkan secara eksplisit oleh Anda.</p>
+            
+            <h2>6. Penyimpanan dan Keamanan</h2>
+            <p>Data Anda disimpan dengan aman di infrastruktur cloud dengan langkah-langkah keamanan yang kuat, termasuk:</p>
+            <ul>
+                <li>Enkripsi saat disimpan (at rest) dan saat transit</li>
+                <li>Kontrol akses</li>
+                <li>Audit dan pemantauan rutin</li>
+            </ul>
+            
+            <h2>7. Transfer Lintas Batas</h2>
+            <p>Data Anda dapat disimpan atau diproses di server aman yang berlokasi di negara lain. Saat mentransfer data lintas batas, kami mengambil langkah-langkah untuk memastikan data tersebut ditangani dengan cara yang menghormati peraturan lokal dan melindungi privasi Anda.</p>
+            <p>Langkah-langkah ini dapat mencakup minimalisasi data, enkripsi, perlindungan kontraktual, dan memastikan adanya perlindungan yang memadai. Jika diwajibkan, kami akan meminta persetujuan pengguna atau mengambil langkah-langkah kepatuhan tambahan yang sejalan dengan hukum setempat.</p>
+            
+            <h2>8. Penggunaan Data untuk AI, Inovasi, dan Peningkatan Layanan</h2>
+            <p>Sebagai perusahaan teknologi yang berfokus pada data dan AI, AgriG8 memanfaatkan informasi yang Anda berikan untuk meningkatkan platform dan layanan kami.</p>
+            <p>Kami dapat menggunakan data — termasuk input pribadi dan yang terkait dengan pertanian — untuk mendukung kegiatan seperti:</p>
+            <ul>
+                <li>Meningkatkan fungsionalitas platform dan pengalaman pengguna kami</li>
+                <li>Mengembangkan alat prediksi, model, dan layanan konsultasi digital</li>
+                <li>Menghasilkan laporan, tren, dan informasi tolok ukur (benchmarking)</li>
+            </ul>
+            <p>Meskipun data Anda membantu kami membangun solusi yang lebih cerdas, harap perhatikan:</p>
+            <ul>
+                <li>Kami <strong>tidak menjual data pribadi atau data yang dikirimkan pengguna</strong> kepada pihak ketiga.</li>
+                <li>Kami dapat menawarkan <strong>wawasan berbasis data atau hasil agregat</strong> kepada mitra, klien, atau pemangku kepentingan dengan cara yang <strong>tidak mengidentifikasi individu</strong>.</li>
+                <li>Setiap penggunaan data untuk tujuan eksternal dilakukan secara bertanggung jawab dan sesuai dengan standar industri.</li>
+            </ul>
+            <p>Pendekatan ini konsisten dengan praktik yang digunakan oleh platform digital global, di mana data diterapkan untuk membangun pengalaman yang lebih baik, menginformasikan strategi, dan mendorong inovasi — selalu dengan menghormati privasi individu.</p>
+            
+            <h2>9. Hak Anda</h2>
+            <p>Anda memiliki hak untuk:</p>
+            <ul>
+                <li>Mengakses data pribadi Anda</li>
+                <li>Meminta koreksi atau penghapusan</li>
+                <li>Menarik persetujuan untuk penggunaan tertentu</li>
+                <li>Menghubungi kami jika ada masalah privasi</li>
+            </ul>
+            
+            <h2>10. Permintaan Akses dan Penghapusan</h2>
+            <p>Untuk meminta akses ke data Anda atau memintanya untuk dihapus, silakan hubungi kami di:<br>
+            📧 <strong>contact@agrig8.com</strong><br>
+            Kami akan merespons dalam waktu 30 hari.</p>
+            
+            <h2>11. Kepatuhan terhadap Kebijakan Google Play</h2>
+            <p>Sesuai dengan kebijakan Data Pengguna Google Play:</p>
+            <ul>
+                <li>Kami mengumpulkan data pribadi hanya untuk mendukung fitur inti seperti layanan konsultasi dan keberlanjutan</li>
+                <li>Kami <strong>tidak menjual data pribadi Anda</strong></li>
+                <li>Data Anda dienkripsi dan disimpan dengan aman</li>
+                <li>Anda dapat memilih untuk tidak ikut (opt out) atau meminta penghapusan kapan saja</li>
+                <li>Kebijakan ini ditampilkan <strong>di dalam aplikasi dan dapat diakses secara publik melalui situs web kami</strong></li>
+            </ul>
+            
+            <h2>12. Pembaruan Kebijakan</h2>
+            <p>Kebijakan privasi ini dapat diperbarui secara berkala. Setiap perubahan signifikan akan dikomunikasikan melalui aplikasi atau situs web.</p>
+            
+            <h2>13. Hubungi Kami</h2>
+            <p>Untuk pertanyaan, kekhawatiran, atau keluhan mengenai kebijakan ini, hubungi:<br>
+            📧 <strong>contact@agrig8.com</strong></p>
         </div>
 
         <div id="khmer-content" class="tab-content" role="tabpanel" aria-labelledby="khmer-tab">
-            <div class="loading">Loading Khmer content...</div>
+            <h1>គោលការណ៍​ឯកជន​ភាព AgriG8</h1>
+            <p><strong>កាលបរិច្ឆេទ​ចូល​ជា​ធរមាន៖</strong> ថ្ងៃទី ២១ ខែ កក្កដា ឆ្នាំ ២០២៥</p>
+            
+            <h2>១. សេចក្តីផ្តើម</h2>
+            <p>AgriG8 ប្តេជ្ញា​ចិត្ត​ក្នុង​ការ​ការពារ​ទិន្នន័យ​ផ្ទាល់ខ្លួន និង​ទិន្នន័យ​កសិកម្ម​របស់​អ្នក។ គោលការណ៍​ឯកជន​ភាព​នេះ​រៀបរាប់​ពី​របៀប​ដែល​យើង​ប្រមូល ប្រើប្រាស់ រក្សាទុក និង​ចែករំលែក​ទិន្នន័យ​នៅ​ក្នុង​ប្រទេស​កម្ពុជា វៀតណាម និង​ឥណ្ឌូណេស៊ី ដោយ​អនុលោម​តាម​ការអនុវត្ត​ល្អ​បំផុត​ជា​អន្តរជាតិ គោលការណ៍​ការពារ​ទិន្នន័យ​របស់​អាស៊ាន និង​គោលការណ៍​របស់ Google Play Store។</p>
+            
+            <h2>២. តើ​យើង​ប្រមូល​ទិន្នន័យ​អ្វីខ្លះ?</h2>
+            <p>យើង​អាច​ប្រមូល​ទិន្នន័យ​ប្រភេទ​ដូច​ខាងក្រោម៖</p>
+            <ul>
+                <li><strong>ទិន្នន័យ​ផ្ទាល់ខ្លួន៖</strong> ឈ្មោះ លេខទូរស័ព្ទ និង​ព័ត៌មាន​លម្អិត​សម្រាប់​ទំនាក់ទំនង​ផ្សេងទៀត។</li>
+                <li><strong>ទិន្នន័យ​កសិកម្ម៖</strong> នេះ​រួមបញ្ចូល​ទាំង​ព័ត៌មាន​ដូចជា ទំហំ​ដី ប្រភេទ​ដំណាំ ទីតាំង​កសិដ្ឋាន កំណត់ត្រា​ទិន្នផល ការប្រើប្រាស់​ធាតុចូល កសិកម្ម​ ការអនុវត្ត​កសិកម្ម និង​ការសង្កេត (ឧទាហរណ៍ ការផ្ទុះ​ឡើង​នៃ​សត្វល្អិត​ចង្រៃ កាលវិភាគ​ដាំដុះ ឬ​កំណត់ចំណាំ​ពាក់ព័ន្ធ​នឹង​អាកាសធាតុ)។ យើង​ក៏​អាច​ប្រមូល​<strong>ទិន្នន័យ​ពាក់ព័ន្ធ​នឹង​កសិកម្ម​ផ្សេងទៀត</strong>​ដែល​ជួយ​យើង​ក្នុង​ការ​ផ្តល់​នូវ​ការយល់ដឹង​ផ្នែក​ក្សេត្រសាស្ត្រ និង​សេវាកម្ម​ប្រឹក្សា​យោបល់​កាន់តែ​ប្រសើរ​ឡើង — ដូចជា​ការប្រើប្រាស់​ទឹក ស្ថានភាព​ដី ការប្រើប្រាស់​ជី និង​សកម្មភាព​ប្រមូលផល។</li>
+                <li><strong>ទិន្នន័យ​ប្រើប្រាស់​ឧបករណ៍ ឬ​កម្មវិធី៖</strong> កំណត់ហេតុ​រោគវិនិច្ឆ័យ របាយការណ៍​បញ្ហា​គាំង និង​ទិន្នន័យ​អន្តរកម្ម (ប្រសិនបើ​មាន) ដែល​ជួយ​យើង​ក្នុង​ការ​កែលម្អ និង​បទពិសោធន៍​អ្នកប្រើប្រាស់​របស់​កម្មវិធី។</li>
+            </ul>
+            
+            <h2>៣. គោលបំណង​នៃ​ការប្រមូល​ទិន្នន័យ</h2>
+            <p>យើង​ប្រមូល និង​ដំណើរការ​ទិន្នន័យ​របស់​អ្នក​សម្រាប់​គោលបំណង​ដូច​ខាងក្រោម៖</p>
+            <ul>
+                <li>ផ្តល់​ដំបូន្មាន​កសិកម្ម​ផ្ទាល់ខ្លួន និង​ការណែនាំ​ផ្នែក​ក្សេត្រសាស្ត្រ</li>
+                <li>គាំទ្រ​ដល់​សកម្មភាព​និរន្តរភាព និង​ការតាមដាន​បរិស្ថាន</li>
+                <li>កែលម្អ​មុខងារ​កម្មវិធី និង​បទពិសោធន៍​អ្នកប្រើប្រាស់</li>
+                <li>បង្កើត​ការយល់ដឹង និង​របាយការណ៍​សម្រាប់​ដៃគូ (ទិន្នន័យ​រួមបញ្ជូលគ្នា និង​មិន​បញ្ចេញ​អត្តសញ្ញាណ)</li>
+            </ul>
+            
+            <h2>៤. ការយល់ព្រម និង​មូលដ្ឋាន​ច្បាប់</h2>
+            <p>ទិន្នន័យ​របស់​អ្នក​ត្រូវ​បាន​ប្រមូល​ដោយ​ផ្អែកលើ​<strong>ការយល់ព្រម​ដោយ​មាន​ការ​ជូនដំណឹង និង​ច្បាស់លាស់</strong>​របស់​អ្នក។ អ្នក​ត្រូវតែ​ផ្តល់​ការយល់ព្រម​មុនពេល​ទិន្នន័យ​ណាមួយ​ត្រូវ​បាន​ប្រមូល។ អ្នក​អាច​ដក​ការយល់ព្រម​របស់​អ្នក​វិញ​បាន​គ្រប់ពេល​តាមរយៈ​កម្មវិធី ឬ​ដោយ​ទាក់ទង​មក​យើង។</p>
+            
+            <h2>៥. ការចែករំលែក​ទិន្នន័យ</h2>
+            <p>យើង​អាច​ចែករំលែក​ទិន្នន័យ​របស់​អ្នក​បាន​<strong>លុះត្រាតែ​មាន​ការយល់ព្រម​ពី​អ្នក</strong> និង​សម្រាប់​ករណី​ប្រើប្រាស់​ជាក់លាក់​ដូចជា៖</p>
+            <ul>
+                <li>ជាមួយ​ដៃគូ​រដ្ឋាភិបាល ឬ​អង្គការ​មិនមែន​រដ្ឋាភិបាល​ដែល​ពាក់ព័ន្ធ​នឹង​ការអភិវឌ្ឍ​វិស័យ​កសិកម្ម</li>
+                <li>ជាមួយ​ទីភ្នាក់ងារ​ស្រាវជ្រាវ ទីប្រឹក្សា ឬ​ទីភ្នាក់ងារ​បញ្ជាក់​គុណភាព</li>
+                <li>ជាមួយ​<strong>ភាគី​ពាក់ព័ន្ធ​ក្នុង​វិស័យ​កសិ-ពាណិជ្ជកម្ម</strong> (ឧទាហរណ៍ អ្នកផ្គត់ផ្គង់​ធាតុចូល ដៃគូ​និរន្តរភាព ឬ​អ្នកទិញ) សម្រាប់​គោលបំណង​ដែល​ស្រប​នឹង​ការគាំទ្រ​កសិករ និង​ការអភិវឌ្ឍ​ប្រព័ន្ធ​អេកូឡូស៊ី</li>
+            </ul>
+            <p>ទិន្នន័យ​ដែល​បាន​ចែករំលែក​ទាំងអស់​នឹង​ត្រូវ​បាន​<strong>បូកសរុប ហើយមិនត្រូវបាន​បញ្ចេញ​អត្តសញ្ញាណ</strong>​តាម​ដែល​អាច​ធ្វើ​ទៅ​បាន។ យើង​មិន​ចែករំលែក​ព័ត៌មាន​ដែល​អាច​កំណត់​អត្តសញ្ញាណ​ផ្ទាល់ខ្លួន​បានទេ លុះត្រាតែ​មាន​ការអនុញ្ញាត​យ៉ាង​ច្បាស់លាស់​ពី​អ្នក។</p>
+            
+            <h2>៦. ការរក្សាទុក និង​សុវត្ថិភាព</h2>
+            <p>ទិន្នន័យ​របស់​អ្នក​ត្រូវ​បាន​រក្សាទុក​យ៉ាង​មាន​សុវត្ថិភាព​នៅ​ក្នុងប្រព័ន្ធគ្រប់គ្រងទិន្នន័យ (cloud) ជាមួយ​នឹង​វិធានការ​សុវត្ថិភាព​រឹងមាំ រួមមាន៖</p>
+            <ul>
+                <li>ការ​បំប្លែង​ទិន្នន័យ​ទៅ​ជា​កូដ (Encryption) នៅពេល​រក្សាទុក និង​ពេល​បញ្ជូន</li>
+                <li>ការគ្រប់គ្រង​ការចូល​ប្រើប្រាស់</li>
+                <li>ការធ្វើ​សវនកម្ម និង​ការត្រួតពិនិត្យ​ជាប្រចាំ</li>
+            </ul>
+            
+            <h2>៧. ការផ្ទេរ​ទិន្នន័យ​ឆ្លងដែន</h2>
+            <p>ទិន្នន័យ​របស់​អ្នក​អាច​ត្រូវ​បាន​រក្សាទុក ឬ​ដំណើរការ​នៅ​លើ​ម៉ាស៊ីន​មេ (servers) ដែល​មាន​សុវត្ថិភាព​នៅ​ក្នុង​ប្រទេស​ផ្សេងទៀត។ នៅពេល​ផ្ទេរ​ទិន្នន័យ​ឆ្លងដែន យើង​ចាត់វិធានការ​ដើម្បី​ធានា​ថា​វា​ត្រូវ​បាន​គ្រប់គ្រង​តាម​របៀប​ដែល​គោរព​បទប្បញ្ញត្តិ​ក្នុង​ស្រុក និង​ការពារ​ឯកជន​ភាព​របស់​អ្នក។</p>
+            <p>ជំហាន​ទាំងនេះ​អាច​រួមបញ្ចូល​ទាំង​ការកាត់បន្ថយ​ទិន្នន័យ​អប្បបរមា ការ​បំប្លែង​ទៅ​ជា​កូដ ការការពារ​តាម​កិច្ចសន្យា និង​ការធានា​ថា​មាន​ការការពារ​សមស្រប។ នៅពេល​ដែល​តម្រូវ​ដោយ​ច្បាប់ យើង​នឹង​ស្នើសុំ​ការយល់ព្រម​ពី​អ្នកប្រើប្រាស់ ឬ​ចាត់វិធានការ​អនុលោម​បន្ថែម​តាម​ច្បាប់​ក្នុង​ស្រុក។</p>
+            
+            <h2>៨. ការប្រើប្រាស់​ទិន្នន័យ​សម្រាប់ AI, នវានុវត្តន៍ និង​ការកែលម្អ​សេវាកម្ម</h2>
+            <p>ក្នុងនាម​ជា​ក្រុមហ៊ុន​បច្ចេកវិទ្យា​ដែល​ផ្តោត​លើ​ទិន្នន័យ និង AI, AgriG8 ប្រើប្រាស់​ព័ត៌មាន​ដែល​អ្នក​ផ្តល់​ឲ្យ​ដើម្បី​បង្កើន​ប្រសិទ្ធភាព​នៃ​ប្រព័ន្ធ​និង​សេវាកម្ម​របស់​យើង។</p>
+            <p>យើង​អាច​ប្រើប្រាស់​ទិន្នន័យ — រួមទាំង​ធាតុចូល​ផ្ទាល់ខ្លួន និង​ពាក់ព័ន្ធ​នឹង​កសិកម្ម — ដើម្បី​គាំទ្រ​ដល់​សកម្មភាព​ដូចជា៖</p>
+            <ul>
+                <li>កែលម្អ​មុខងារ​ប្រព័ន្ធ​និង​បទពិសោធន៍​អ្នកប្រើប្រាស់​របស់​យើង</li>
+                <li>អភិវឌ្ឍ​ឧបករណ៍​ព្យាករណ៍ ម៉ូដែល និង​សេវាកម្ម​ប្រឹក្សា​ឌីជីថល</li>
+                <li>បង្កើត​របាយការណ៍ និន្នាការ និង​ព័ត៌មាន​សម្រាប់​ការប្រៀបធៀប</li>
+            </ul>
+            <p>ខណៈពេល​ដែល​ទិន្នន័យ​របស់​អ្នក​ជួយ​យើង​ក្នុង​ការ​បង្កើត​ដំណោះស្រាយ​កាន់តែ​ឆ្លាតវៃ សូម​ចំណាំ​ថា៖</p>
+            <ul>
+                <li>យើង​<strong>មិន​លក់​ទិន្នន័យ​ផ្ទាល់ខ្លួន ឬ​ទិន្នន័យ​ដែល​អ្នកប្រើប្រាស់​បាន​បញ្ជូន</strong>​ទៅ​ឲ្យ​ភាគី​ទីបី​ឡើយ។</li>
+                <li>យើង​អាច​ផ្តល់​ជូន​នូវ​<strong>ការយល់ដឹង​ផ្អែកលើ​ទិន្នន័យ ឬ​លទ្ធផល​រួម</strong>​ទៅ​ឲ្យ​ដៃគូ អតិថិជន ឬ​ភាគី​ពាក់ព័ន្ធ​តាម​របៀប​ដែល​<strong>មិន​កំណត់​អត្តសញ្ញាណ​បុគ្គល</strong>។</li>
+                <li>រាល់​ការប្រើប្រាស់​ទិន្នន័យ​សម្រាប់​គោលបំណង​ខាងក្រៅ​ត្រូវ​បាន​ធ្វើឡើង​ដោយ​មាន​ការទទួលខុសត្រូវ និង​អនុលោម​តាម​ស្តង់ដារ​ឧស្សាហកម្ម។</li>
+            </ul>
+            <p>វិធីសាស្រ្តនេះ​គឺ​ស្រប​ទៅ​នឹង​ការអនុវត្ត​ដែល​ត្រូវ​បាន​ប្រើប្រាស់​ដោយ​វេទិកា​ឌីជីថល​សកល ដែល​ទិន្នន័យ​ត្រូវ​បាន​ប្រើ​ដើម្បី​បង្កើត​បទពិសោធន៍​កាន់តែ​ប្រសើរ ជូនដំណឹង​អំពី​យុទ្ធសាស្ត្រ និង​ការជំរុញ​ការបង្កើតថ្មី — ដោយ​តែងតែ​គោរព​ភាព​ឯកជន​របស់​បុគ្គល​ម្នាក់ៗ។</p>
+            
+            <h2>៩. សិទ្ធិ​របស់​អ្នក</h2>
+            <p>អ្នក​មាន​សិទ្ធិ​ក្នុង​ការ៖</p>
+            <ul>
+                <li>ចូល​មើល​ទិន្នន័យ​ផ្ទាល់ខ្លួន​របស់​អ្នក</li>
+                <li>ស្នើសុំ​កែតម្រូវ ឬ​លុបចោល</li>
+                <li>ដក​ការយល់ព្រម​សម្រាប់​ការប្រើប្រាស់​ជាក់លាក់</li>
+                <li>ទាក់ទង​មក​យើង​ប្រសិនបើ​មាន​កង្វល់​អំពី​ឯកជន​ភាព</li>
+            </ul>
+            
+            <h2>១០. ការស្នើសុំ​ចូល​មើល និង​លុបចោល</h2>
+            <p>ដើម្បី​ស្នើសុំ​ចូល​មើល​ទិន្នន័យ​របស់​អ្នក ឬ​ស្នើសុំ​ឲ្យ​លុបចោល សូម​ទាក់ទង​មក​យើង​តាមរយៈ៖<br>
+            📧 <strong>contact@agrig8.com</strong><br>
+            យើង​នឹង​ឆ្លើយតប​ក្នុង​រយៈពេល ៣០ ថ្ងៃ។</p>
+            
+            <h2>១១. ការអនុលោម​តាម​គោលការណ៍​របស់ Google Play</h2>
+            <p>អនុលោម​តាម​គោលការណ៍​ទិន្នន័យ​អ្នកប្រើប្រាស់​របស់ Google Play៖</p>
+            <ul>
+                <li>យើង​ប្រមូល​ទិន្នន័យ​ផ្ទាល់ខ្លួន​ដើម្បី​គាំទ្រ​តែ​មុខងារ​ស្នូល​ដូចជា សេវាកម្ម​ប្រឹក្សា និង​និរន្តរភាព</li>
+                <li>យើង​<strong>មិន​លក់​ទិន្នន័យ​ផ្ទាល់ខ្លួន​របស់​អ្នក​ទេ</strong></li>
+                <li>ទិន្នន័យ​របស់​អ្នក​ត្រូវ​បាន​បំប្លែង​ទៅ​ជា​កូដ និង​រក្សាទុក​យ៉ាង​មាន​សុវត្ថិភាព</li>
+                <li>អ្នក​អាច​ជ្រើសរើស​មិន​ចូលរួម ឬ​ស្នើសុំ​លុបចោល​បាន​គ្រប់ពេល</li>
+                <li>គោលការណ៍​នេះ​ត្រូវ​បាន​បង្ហាញ​<strong>នៅ​ក្នុង​កម្មវិធី និង​អាច​ចូល​មើល​ជា​សាធារណៈ​តាមរយៈ​គេហទំព័រ​របស់​យើង</strong></li>
+            </ul>
+            
+            <h2>១២. ការធ្វើបច្ចុប្បន្នភាព​គោលការណ៍</h2>
+            <p>គោលការណ៍​ឯកជន​ភាព​នេះ​អាច​ត្រូវ​បាន​ធ្វើបច្ចុប្បន្នភាព​ជា​ប្រចាំ។ រាល់​ការផ្លាស់ប្តូរ​សំខាន់ៗ​នឹង​ត្រូវ​បាន​ជូនដំណឹង​តាមរយៈ​កម្មវិធី ឬ​គេហទំព័រ។</p>
+            
+            <h2>១៣. ទាក់ទង​យើង</h2>
+            <p>សម្រាប់​សំណួរ កង្វល់ ឬ​ការតវ៉ា​ទាក់ទងនឹង​គោលការណ៍នេះ សូម​ទាក់ទងមកកាន់៖<br>
+            📧 <strong>contact@agrig8.com</strong></p>
         </div>
 
         <div id="vietnamese-content" class="tab-content" role="tabpanel" aria-labelledby="vietnamese-tab">
-            <div class="loading">Loading Vietnamese content...</div>
+            <h1>CHÍNH SÁCH QUYỀN RIÊNG TƯ CỦA AGRIG8</h1>
+            <p><strong>Ngày hiệu lực:</strong> 21 tháng 7 năm 2025</p>
+            
+            <h2>1. Giới thiệu</h2>
+            <p>AgriG8 cam kết bảo vệ dữ liệu cá nhân và dữ liệu canh tác của người dùng. Chính sách quyền riêng tư này quy định cách thức chúng tôi thu thập, sử dụng, lưu trữ và chia sẻ dữ liệu tại Campuchia, Việt Nam và Indonesia, phù hợp với thông lệ quốc tế, các nguyên tắc bảo vệ dữ liệu của ASEAN và chính sách của Cửa hàng Google Play.</p>
+            
+            <h2>2. Dữ liệu chúng tôi thu thập</h2>
+            <p>Chúng tôi có thể thu thập các loại dữ liệu sau:</p>
+            <ul>
+                <li><strong>Dữ liệu cá nhân:</strong> Họ tên, số điện thoại và các thông tin liên hệ khác.</li>
+                <li><strong>Dữ liệu nông nghiệp:</strong> Bao gồm thông tin như diện tích đất, loại cây trồng, vị trí trang trại, hồ sơ năng suất, việc sử dụng đầu vào, phương pháp canh tác và các quan sát tại hiện trường (ví dụ: sâu bệnh, lịch gieo trồng hoặc ghi chú thời tiết). Chúng tôi cũng có thể thu thập <strong>các dữ liệu khác liên quan đến nông nghiệp</strong> nhằm cải thiện dịch vụ tư vấn nông học — chẳng hạn như mức tiêu thụ nước, tình trạng đất, bón phân, và hoạt động thu hoạch.</li>
+                <li><strong>Dữ liệu thiết bị hoặc dữ liệu sử dụng ứng dụng:</strong> Bao gồm nhật ký chẩn đoán, báo cáo lỗi và dữ liệu tương tác (nếu có), giúp chúng tôi cải thiện hiệu suất và trải nghiệm người dùng.</li>
+            </ul>
+            
+            <h2>3. Mục đích thu thập</h2>
+            <p>Chúng tôi thu thập và xử lý dữ liệu vì các mục đích sau:</p>
+            <ul>
+                <li>Cung cấp tư vấn canh tác và khuyến nghị nông học cá nhân hóa</li>
+                <li>Hỗ trợ chứng nhận phát triển bền vững và theo dõi môi trường</li>
+                <li>Cải tiến tính năng và nâng cao trải nghiệm người dùng trên ứng dụng</li>
+                <li>Tạo báo cáo và phân tích tổng hợp (ẩn danh) cho đối tác</li>
+            </ul>
+            
+            <h2>4. Căn cứ pháp lý và sự đồng ý</h2>
+            <p>Dữ liệu của người dùng được thu thập dựa trên <strong>sự đồng ý rõ ràng và minh bạch</strong>. Người dùng phải cung cấp sự đồng ý trước khi bất kỳ dữ liệu nào được thu thập. Người dùng có quyền rút lại sự đồng ý bất kỳ lúc nào thông qua ứng dụng hoặc bằng cách liên hệ với chúng tôi.</p>
+            
+            <h2>5. Chia sẻ dữ liệu</h2>
+            <p>Chúng tôi chỉ chia sẻ dữ liệu của người dùng <strong>khi có sự đồng ý rõ ràng</strong> và trong các trường hợp cụ thể sau:</p>
+            <ul>
+                <li>Với cơ quan chính phủ hoặc tổ chức phi chính phủ có liên quan đến phát triển nông nghiệp</li>
+                <li>Với tổ chức nghiên cứu, tư vấn hoặc đơn vị chứng nhận</li>
+                <li>Với <strong>các bên liên quan trong hệ sinh thái nông nghiệp</strong> (ví dụ: nhà cung cấp đầu vào, đối tác bền vững, người thu mua) nhằm hỗ trợ nông dân và phát triển hệ sinh thái</li>
+            </ul>
+            <p>Tất cả dữ liệu chia sẻ sẽ được <strong>tổng hợp và ẩn danh hóa</strong> trong phạm vi có thể. Chúng tôi không chia sẻ thông tin định danh cá nhân nếu không có sự cho phép cụ thể từ người dùng.</p>
+            
+            <h2>6. Lưu trữ và bảo mật</h2>
+            <p>Dữ liệu của người dùng được lưu trữ an toàn trên cơ sở hạ tầng đám mây với các biện pháp bảo mật mạnh mẽ, bao gồm:</p>
+            <ul>
+                <li>Mã hóa dữ liệu trong quá trình lưu trữ và truyền tải</li>
+                <li>Kiểm soát truy cập nghiêm ngặt</li>
+                <li>Kiểm tra và giám sát định kỳ hệ thống</li>
+            </ul>
+            
+            <h2>7. Chuyển dữ liệu xuyên biên giới</h2>
+            <p>Dữ liệu của người dùng có thể được lưu trữ hoặc xử lý trên máy chủ đặt tại các quốc gia khác. Khi thực hiện việc chuyển dữ liệu xuyên biên giới, chúng tôi áp dụng các biện pháp nhằm bảo đảm dữ liệu được xử lý phù hợp với quy định địa phương và đảm bảo quyền riêng tư của người dùng.</p>
+            <p>Các biện pháp có thể bao gồm: giảm thiểu dữ liệu, mã hóa, điều khoản hợp đồng, và tuân thủ luật pháp hiện hành. Trong trường hợp cần thiết, chúng tôi sẽ xin thêm sự đồng ý từ người dùng hoặc thực hiện các biện pháp tuân thủ bổ sung phù hợp với luật pháp địa phương.</p>
+            
+            <h2>8. Sử dụng dữ liệu cho AI, đổi mới và cải tiến dịch vụ</h2>
+            <p>Là một công ty công nghệ tập trung vào dữ liệu và AI, AgriG8 sử dụng thông tin do người dùng cung cấp để nâng cao nền tảng và dịch vụ của chúng tôi.</p>
+            <p>Chúng tôi có thể sử dụng dữ liệu — bao gồm thông tin cá nhân và liên quan đến nông nghiệp — để hỗ trợ các hoạt động như:</p>
+            <ul>
+                <li>Cải thiện chức năng nền tảng và trải nghiệm người dùng</li>
+                <li>Phát triển công cụ dự báo, mô hình và dịch vụ tư vấn kỹ thuật số</li>
+                <li>Tạo báo cáo, phân tích xu hướng và thông tin so sánh chuẩn hóa</li>
+            </ul>
+            <p>Mặc dù dữ liệu của bạn giúp chúng tôi xây dựng các giải pháp thông minh hơn, xin lưu ý:</p>
+            <ul>
+                <li>Chúng tôi <strong>không bán dữ liệu cá nhân hoặc dữ liệu do người dùng cung cấp</strong> cho bên thứ ba.</li>
+                <li>Chúng tôi có thể cung cấp <strong>thông tin phân tích dựa trên dữ liệu hoặc kết quả tổng hợp</strong> cho đối tác, khách hàng hoặc bên liên quan theo cách <strong>không xác định danh tính cá nhân</strong>.</li>
+                <li>Bất kỳ việc sử dụng dữ liệu nào cho mục đích bên ngoài đều được thực hiện một cách có trách nhiệm và phù hợp với các tiêu chuẩn ngành.</li>
+            </ul>
+            <p>Cách tiếp cận này phù hợp với các thông lệ được sử dụng bởi các nền tảng kỹ thuật số toàn cầu, nơi dữ liệu được áp dụng để xây dựng trải nghiệm tốt hơn, thông báo chiến lược và thúc đẩy đổi mới — luôn tôn trọng quyền riêng tư cá nhân.</p>
+            
+            <h2>9. Quyền của người dùng</h2>
+            <p>Người dùng có quyền:</p>
+            <ul>
+                <li>Truy cập dữ liệu cá nhân của mình</li>
+                <li>Yêu cầu chỉnh sửa hoặc xóa dữ liệu</li>
+                <li>Rút lại sự đồng ý cho các mục đích xử lý cụ thể</li>
+                <li>Liên hệ với chúng tôi về bất kỳ vấn đề quyền riêng tư nào</li>
+            </ul>
+            
+            <h2>10. Yêu cầu truy cập và xóa dữ liệu</h2>
+            <p>Để yêu cầu truy cập hoặc xóa dữ liệu cá nhân, vui lòng liên hệ với chúng tôi qua:<br>
+            📧 <strong>contact@agrig8.com</strong><br>
+            Chúng tôi sẽ phản hồi trong vòng 30 ngày kể từ ngày nhận được yêu cầu hợp lệ.</p>
+            
+            <h2>11. Tuân thủ chính sách của Google Play</h2>
+            <p>Theo Chính sách Dữ liệu Người dùng của Google Play:</p>
+            <ul>
+                <li>Chúng tôi chỉ thu thập dữ liệu cá nhân để hỗ trợ các chức năng cốt lõi như dịch vụ tư vấn và phát triển bền vững</li>
+                <li>Chúng tôi <strong>không bán dữ liệu cá nhân của bạn</strong></li>
+                <li>Dữ liệu của bạn được mã hóa và lưu trữ an toàn</li>
+                <li>Bạn có thể từ chối hoặc yêu cầu xóa dữ liệu bất cứ lúc nào</li>
+                <li>Chính sách này được <strong>hiển thị trong ứng dụng và có thể truy cập công khai qua trang web của chúng tôi</strong></li>
+            </ul>
+            
+            <h2>12. Cập nhật chính sách</h2>
+            <p>Chính sách quyền riêng tư này có thể được cập nhật định kỳ. Mọi thay đổi quan trọng sẽ được thông báo qua ứng dụng hoặc trang web.</p>
+            
+            <h2>13. Liên hệ</h2>
+            <p>Đối với bất kỳ câu hỏi, thắc mắc hoặc khiếu nại nào liên quan đến chính sách này, vui lòng liên hệ:<br>
+            📧 <strong>contact@agrig8.com</strong></p>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script>
-        // Initialize global content object
-        window.AgriG8PrivacyContent = window.AgriG8PrivacyContent || {};
-        console.log('AgriG8 Privacy: Initializing tabbed interface');
-    </script>
-    
-    <!-- Load content files -->
-    <script src="js/content/english.js"></script>
-    <script src="js/content/indonesian.js"></script>
-    <script src="js/content/khmer.js"></script>
-    <script src="js/content/vietnamese.js"></script>
-    
-    <!-- Tab functionality -->
+    <!-- Simple Tab Functionality -->
     <script>
         (function() {
             'use strict';
 
             let currentTab = 'english';
-            let contentLoaded = false;
 
             // Initialize tabs when DOM is ready
             function init() {
-                console.log('AgriG8 Privacy: Initializing tabs');
+                console.log('AgriG8 Privacy: Initializing basic tabs');
                 setupTabListeners();
-                loadContent();
             }
 
             // Set up tab click listeners
@@ -463,14 +762,6 @@
                             switchTab(tabId);
                         }
                     });
-
-                    // Keyboard navigation
-                    button.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.click();
-                        }
-                    });
                 });
 
                 console.log('AgriG8 Privacy: Tab listeners set up for', tabButtons.length, 'tabs');
@@ -478,7 +769,7 @@
 
             // Switch to a different tab
             function switchTab(tabId) {
-                console.log('AgriG8 Privacy: Switching to tab:', tabId);
+                console.log('Switching to tab:', tabId);
 
                 // Update tab buttons
                 document.querySelectorAll('.tab-button').forEach(btn => {
@@ -500,81 +791,19 @@
                 const newPanel = document.getElementById(`${tabId}-content`);
                 if (newPanel) {
                     newPanel.classList.add('active');
-                    // Scroll to top of new content
                     newPanel.scrollTop = 0;
                 }
 
                 currentTab = tabId;
-
-                // Load content for this tab if not already loaded
-                loadContentForTab(tabId);
-            }
-
-            // Load content from the global object
-            function loadContent() {
-                console.log('AgriG8 Privacy: Loading content');
-                
-                // Check if content is available
-                const checkContent = () => {
-                    if (window.AgriG8PrivacyContent && Object.keys(window.AgriG8PrivacyContent).length > 0) {
-                        console.log('AgriG8 Privacy: Content found, populating tabs');
-                        populateAllTabs();
-                        contentLoaded = true;
-                    } else {
-                        console.log('AgriG8 Privacy: Waiting for content...');
-                        setTimeout(checkContent, 100);
-                    }
-                };
-
-                checkContent();
-            }
-
-            // Populate all tab content
-            function populateAllTabs() {
-                const languages = ['english', 'indonesian', 'khmer', 'vietnamese'];
-                
-                languages.forEach(lang => {
-                    loadContentForTab(lang);
-                });
-            }
-
-            // Load content for a specific tab
-            function loadContentForTab(tabId) {
-                const panel = document.getElementById(`${tabId}-content`);
-                if (!panel) return;
-
-                if (window.AgriG8PrivacyContent && window.AgriG8PrivacyContent[tabId]) {
-                    const content = window.AgriG8PrivacyContent[tabId];
-                    panel.innerHTML = content.content || '<p>Content not available</p>';
-                    console.log(`AgriG8 Privacy: Loaded content for ${tabId}`);
-                } else {
-                    panel.innerHTML = `
-                        <div style="text-align: center; padding: 60px 20px; color: #dc2626;">
-                            <h2>Content Not Available</h2>
-                            <p>Sorry, the privacy policy content for "${tabId}" could not be loaded.</p>
-                            <p style="margin-top: 20px;">
-                                <button onclick="window.location.reload()" style="background: #48773e; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                                    Refresh Page
-                                </button>
-                            </p>
-                        </div>
-                    `;
-                    console.warn(`AgriG8 Privacy: No content found for ${tabId}`);
-                }
             }
 
             // Public API
             window.AgriG8Privacy = {
                 switchTab: switchTab,
-                getCurrentTab: () => currentTab,
-                isContentLoaded: () => contentLoaded,
-                checkContent: () => {
-                    console.log('Available content:', Object.keys(window.AgriG8PrivacyContent || {}));
-                    return window.AgriG8PrivacyContent;
-                }
+                getCurrentTab: () => currentTab
             };
 
-            // Initialize when DOM is ready
+            // Initialize
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
