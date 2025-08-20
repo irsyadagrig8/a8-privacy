@@ -47,6 +47,10 @@
     }
     </script>
     
+    <!-- External CSS file for styles (recommended for production) -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Inline critical styles for immediate rendering -->
     <style>
         * {
             margin: 0;
@@ -324,126 +328,26 @@
             font-weight: 400;
         }
 
-        /* Loading state */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
         /* Mobile Styles */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 40px 20px;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .language-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .language-card {
-                padding: 25px 15px;
-            }
-
-            .modal {
-                padding: 10px;
-            }
-
-            .modal-content {
-                margin: 0;
-                max-height: 95vh;
-                border-radius: 10px;
-            }
-
-            .modal-header {
-                padding: 20px 20px 15px;
-            }
-
-            .modal-body {
-                padding: 20px;
-            }
-
-            .modal-title {
-                font-size: 1.2rem;
-            }
-
-            .modal-body h1 {
-                font-size: 1.5rem;
-            }
-
-            .modal-body h2 {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 15px;
-            }
-            
-            .language-card {
-                padding: 20px 15px;
-            }
-            
-            .flag {
-                font-size: 1.5rem;
-            }
-            
-            .language-name {
-                font-size: 1.1rem;
-            }
-            
-            .language-native {
-                font-size: 0.9rem;
-            }
+            body { padding: 10px; }
+            .container { padding: 40px 20px; }
+            .logo { font-size: 2rem; }
+            .language-grid { grid-template-columns: 1fr; gap: 15px; }
+            .language-card { padding: 25px 15px; }
+            .modal { padding: 10px; }
+            .modal-content { margin: 0; max-height: 95vh; border-radius: 10px; }
+            .modal-header { padding: 20px 20px 15px; }
+            .modal-body { padding: 20px; }
+            .modal-title { font-size: 1.2rem; }
+            .modal-body h1 { font-size: 1.5rem; }
+            .modal-body h2 { font-size: 1.2rem; }
         }
 
         /* Focus styles for accessibility */
-        .language-card:focus,
-        .close-btn:focus {
+        .language-card:focus, .close-btn:focus {
             outline: 2px solid #a21942;
             outline-offset: 2px;
-        }
-
-        /* Print styles */
-        @media print {
-            .modal {
-                position: static !important;
-                background: none !important;
-                display: block !important;
-                opacity: 1 !important;
-            }
-            
-            .modal-content {
-                box-shadow: none !important;
-                max-height: none !important;
-                transform: none !important;
-            }
-            
-            .modal-header {
-                border-bottom: 2px solid #000 !important;
-            }
-            
-            .close-btn {
-                display: none !important;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
         }
     </style>
 </head>
@@ -509,19 +413,41 @@
         </div>
     </div>
 
-    <!-- Scripts - Load content first, then modal functionality -->
+    <!-- Scripts: Load content files first, then modal -->
     <script>
         // Initialize global content object
         window.AgriG8PrivacyContent = window.AgriG8PrivacyContent || {};
+        console.log('Privacy Policy: Initializing content object');
     </script>
+    
+    <!-- Language content files -->
     <script src="js/content/english.js"></script>
     <script src="js/content/indonesian.js"></script>
     <script src="js/content/khmer.js"></script>
     <script src="js/content/vietnamese.js"></script>
+    
+    <!-- Wait for content to load, then load modal functionality -->
     <script>
-        // Debug: Check if content loaded
-        console.log('Content loaded:', Object.keys(window.AgriG8PrivacyContent));
+        // Verify content loaded before modal
+        function loadModalWhenReady() {
+            const contentCount = window.AgriG8PrivacyContent ? Object.keys(window.AgriG8PrivacyContent).length : 0;
+            console.log('Privacy Policy: Content loaded count:', contentCount);
+            
+            if (contentCount >= 4) {
+                console.log('Privacy Policy: All content loaded, loading modal script');
+                const modalScript = document.createElement('script');
+                modalScript.src = 'js/modal.js';
+                modalScript.onload = () => console.log('Privacy Policy: Modal script loaded successfully');
+                modalScript.onerror = () => console.error('Privacy Policy: Failed to load modal script');
+                document.head.appendChild(modalScript);
+            } else {
+                console.log('Privacy Policy: Waiting for content...');
+                setTimeout(loadModalWhenReady, 100);
+            }
+        }
+        
+        // Start loading check after a brief delay
+        setTimeout(loadModalWhenReady, 50);
     </script>
-    <script src="js/modal.js"></script>
 </body>
 </html>
