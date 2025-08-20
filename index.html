@@ -459,29 +459,29 @@
         <div class="subtitle">Privacy Policy</div>
         
         <div class="language-grid">
-            <a href="#english" class="language-card" data-lang="english" role="button" tabindex="0" aria-label="View privacy policy in English">
+            <div class="language-card" data-lang="english" role="button" tabindex="0" aria-label="View privacy policy in English">
                 <div class="flag">🇺🇸</div>
                 <div class="language-name">English</div>
                 <div class="language-native">Privacy Policy</div>
-            </a>
+            </div>
             
-            <a href="#indonesian" class="language-card" data-lang="indonesian" role="button" tabindex="0" aria-label="View privacy policy in Indonesian">
+            <div class="language-card" data-lang="indonesian" role="button" tabindex="0" aria-label="View privacy policy in Indonesian">
                 <div class="flag">🇮🇩</div>
                 <div class="language-name">Indonesian</div>
                 <div class="language-native">Kebijakan Privasi</div>
-            </a>
+            </div>
             
-            <a href="#khmer" class="language-card" data-lang="khmer" role="button" tabindex="0" aria-label="View privacy policy in Khmer">
+            <div class="language-card" data-lang="khmer" role="button" tabindex="0" aria-label="View privacy policy in Khmer">
                 <div class="flag">🇰🇭</div>
                 <div class="language-name">Khmer</div>
                 <div class="language-native">គោលការណ៍ឯកជនភាព</div>
-            </a>
+            </div>
             
-            <a href="#vietnamese" class="language-card" data-lang="vietnamese" role="button" tabindex="0" aria-label="View privacy policy in Vietnamese">
+            <div class="language-card" data-lang="vietnamese" role="button" tabindex="0" aria-label="View privacy policy in Vietnamese">
                 <div class="flag">🇻🇳</div>
                 <div class="language-name">Vietnamese</div>
                 <div class="language-native">Chính Sách Quyền Riêng Tư</div>
-            </a>
+            </div>
             
             <div class="language-card coming-soon" aria-label="Thai privacy policy coming soon">
                 <div class="flag">🇹🇭</div>
@@ -509,11 +509,19 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts - Load content first, then modal functionality -->
+    <script>
+        // Initialize global content object
+        window.AgriG8PrivacyContent = window.AgriG8PrivacyContent || {};
+    </script>
     <script src="js/content/english.js"></script>
     <script src="js/content/indonesian.js"></script>
     <script src="js/content/khmer.js"></script>
     <script src="js/content/vietnamese.js"></script>
+    <script>
+        // Debug: Check if content loaded
+        console.log('Content loaded:', Object.keys(window.AgriG8PrivacyContent));
+    </script>
     <script src="js/modal.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /**
  * AgriG8 Privacy Policy - Modal Functionality
- * Handles modal interactions, URL routing, and accessibility
+ * Handles modal interactions and accessibility (no URL routing)
  * Last Updated: July 21, 2025
  */
 
@@ -44,9 +44,6 @@
 
         // Set up event listeners
         setupEventListeners();
-
-        // Handle initial URL hash
-        handleInitialHash();
 
         console.log('AgriG8 Privacy Policy modal initialized');
     }
@@ -94,9 +91,6 @@
 
         // Keyboard events
         document.addEventListener('keydown', handleKeyDown);
-
-        // Browser navigation (back/forward buttons)
-        window.addEventListener('hashchange', handleHashChange);
 
         // Prevent modal content clicks from closing modal
         const modalContent = modal.querySelector('.modal-content');
@@ -149,38 +143,6 @@
     }
 
     /**
-     * Handle initial page load with hash
-     */
-    function handleInitialHash() {
-        const hash = window.location.hash.substring(1);
-        if (hash && isValidLanguage(hash)) {
-            // Small delay to ensure content scripts have loaded
-            setTimeout(() => {
-                openModal(hash);
-            }, 100);
-        }
-    }
-
-    /**
-     * Handle hash changes (browser back/forward)
-     */
-    function handleHashChange() {
-        const hash = window.location.hash.substring(1);
-        
-        if (hash && isValidLanguage(hash)) {
-            // Hash changed to valid language
-            if (!isModalOpen || currentLanguage !== hash) {
-                openModal(hash);
-            }
-        } else {
-            // Hash removed or invalid
-            if (isModalOpen) {
-                closeModal(false); // Don't update hash again
-            }
-        }
-    }
-
-    /**
      * Check if language is valid and content is available
      */
     function isValidLanguage(lang) {
@@ -223,11 +185,6 @@
         isModalOpen = true;
         currentLanguage = language;
 
-        // Update URL hash
-        if (window.location.hash !== '#' + language) {
-            window.history.pushState(null, null, '#' + language);
-        }
-
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
 
@@ -245,7 +202,7 @@
     /**
      * Close modal
      */
-    function closeModal(updateHash = true) {
+    function closeModal() {
         if (!isModalOpen) return;
 
         // Remove active class for animation
@@ -263,11 +220,6 @@
 
         // Restore body scroll
         document.body.style.overflow = '';
-
-        // Update URL hash
-        if (updateHash && window.location.hash) {
-            window.history.pushState(null, null, window.location.pathname);
-        }
 
         // Restore focus
         if (focusBeforeModal) {
@@ -288,7 +240,7 @@
                 <h2>Content Not Available</h2>
                 <p>Sorry, the privacy policy content could not be loaded. Please try refreshing the page.</p>
                 <p style="margin-top: 20px;">
-                    <button onclick="window.location.reload()" style="background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    <button onclick="window.location.reload()" style="background: #48773e; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
                         Refresh Page
                     </button>
                 </p>
